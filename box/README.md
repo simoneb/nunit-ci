@@ -1,8 +1,9 @@
-----
 ## Creating a base vagrant box
 
 This folder contains the script to create a base vagrant box to run the Windows Server 2008 VM. As a user your would not normally need to do this.
 The scripts to be run on the host are written in Powershell, therefore it is assumed that the host is a Windows machine.
+
+### Procedure
 
 1. Execute the Powershell script `create-virtualbox-vm.ps1` passing the path to the VHD file, the machine will boot in VirtualBox
 2. Login as Administrator and complete the configuration
