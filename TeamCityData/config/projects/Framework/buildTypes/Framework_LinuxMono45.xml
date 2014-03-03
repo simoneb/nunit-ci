@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build-type SYSTEM "../../../project-config.dtd">
+
+<build-type>
+  <name>Linux Mono 4.5</name>
+  <description />
+  <settings ref="Framework_FrameworkTemplate">
+    <parameters>
+      <param name="Framework" value="mono-4.5" />
+    </parameters>
+    <build-runners order="RUNNER_1" />
+    <vcs-settings />
+    <requirements>
+      <contains name="teamcity.agent.jvm.os.name" value="Linux" />
+      <exists name="system.Mono4.0_x64" />
+    </requirements>
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

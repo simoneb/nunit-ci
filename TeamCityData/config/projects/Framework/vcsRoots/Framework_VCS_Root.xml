@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE vcs-root SYSTEM "../../../project-config.dtd">
+
+<vcs-root type="jetbrains.git">
+  <name>Framework VCS Root</name>
+  <param name="agentCleanFilesPolicy" value="ALL_UNTRACKED" />
+  <param name="agentCleanPolicy" value="ON_BRANCH_CHANGE" />
+  <param name="authMethod" value="ANONYMOUS" />
+  <param name="branch" value="refs/heads/master" />
+  <param name="ignoreKnownHosts" value="true" />
+  <param name="submoduleCheckout" value="CHECKOUT" />
+  <param name="teamcity:branchSpec"><![CDATA[+:refs/pull/(*/merge)
++:refs/heads/(issue-*)
++:refs/heads/(feature-*)]]></param>
+  <param name="url" value="https://github.com/nunit/nunit-framework.git" />
+  <param name="usernameStyle" value="USERID" />
+</vcs-root>
+

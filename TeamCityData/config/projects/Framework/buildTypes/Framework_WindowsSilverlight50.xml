@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build-type SYSTEM "../../../project-config.dtd">
+
+<build-type>
+  <name>Windows Silverlight 5.0</name>
+  <description />
+  <settings ref="Framework_FrameworkTemplate">
+    <parameters>
+      <param name="Framework" value="silverlight-5.0" />
+    </parameters>
+    <build-runners order="RUNNER_1" />
+    <vcs-settings />
+    <requirements>
+      <contains name="teamcity.agent.jvm.os.name" value="Windows" />
+    </requirements>
+    <build-triggers />
+    <cleanup />
+  </settings>
+</build-type>
+

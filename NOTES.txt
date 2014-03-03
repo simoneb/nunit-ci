@@ -1,0 +1,3 @@
+- Vagrant Windows: https://github.com/WinRb/vagrant-windows
+- Creating a Windows box for Vagrant: http://www.thomasvjames.com/2013/09/create-a-windows-base-box-for-vagrant/
+- Installing .NET: http://msdn.microsoft.com/en-us/library/5a4x27ek(v=vs.110).aspx
