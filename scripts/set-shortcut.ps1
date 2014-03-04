@@ -3,14 +3,10 @@ param (
   [ValidateScript({Test-Path $_})]
   [string]$SourceExecutable,
   [parameter(Mandatory=$true)]
-  [ValidateScript({Test-Path $_ -PathType 'Container'})] 
-  [string]$TargetFolder,
+  [string]$TargetLink,
   [parameter(ValueFromRemainingArguments = $true)]
   [string]$Arguments
 )
-
-$LinkName = [io.path]::GetFileNameWithoutExtension($SourceExecutable)
-$TargetLink = Join-Path $TargetFolder ($LinkName + ".lnk")
 
 Write-Host "Creating link $TargetLink to $SourceExecutable with arguments $Arguments"
 

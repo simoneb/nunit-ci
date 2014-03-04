@@ -35,7 +35,7 @@ else
   Write-Host "Installing Java in $javaPath"
   & $javaInstaller /s /v"/qn INSTALLDIR=\""C:\Program Files\Java\jre7\"""
   Write-Host "Setting environment variable JRE_HOME to $javaPath"
-  & "SETX" JRE_HOME "$javaPath"
+  SETX JRE_HOME "$javaPath"
   
   do
   {
@@ -55,6 +55,9 @@ else
   $client.DownloadFile($agentZipUrl, $agentZip)
 }
 
+Write-Host "Adding mono to the PATH"
+SETX PATH "$env:Path;%programfiles(x86)%\Mono-3.2.3\bin"
+
 $shell=new-object -com shell.application
 
 Write-Host "Removing directory structure $buildAgent"
@@ -68,6 +71,11 @@ Write-Host "Copying configuration file over"
 copy $root\config\buildAgent.windows.properties $buildAgent\conf\buildAgent.properties
 
 Write-Host "Creating startup link"
-& (Join-Path $root "scripts\set-shortcut.ps1") $agentBat "$env:appdata\Microsoft\Windows\Start Menu\Programs\Startup" start
+& (Join-Path $root "scripts\set-shortcut.ps1") $agentBat "$env:appdata\Microsoft\Windows\Start Menu\Programs\Startup\start-agent.lnk" start
+
+Write-Host "Creating agent start and stop links on the Desktop"
+& (Join-Path $root "scripts\set-shortcut.ps1") $agentBat "$env:userprofile\Desktop\start-agent.lnk" start
+& (Join-Path $root "scripts\set-shortcut.ps1") $agentBat "$env:userprofile\Desktop\stop-agent.lnk" stop
+
 
 Write-Host "Logon or logoff+logon to start agent" -ForegroundColor Green
