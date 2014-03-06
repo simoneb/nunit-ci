@@ -1,6 +1,5 @@
 downloads/
 .idea/
-modules/
 .vagrant/
 
 # We we just the projects configuration in git
