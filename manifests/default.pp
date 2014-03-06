@@ -86,7 +86,7 @@ exec {'Set JRE_HOME':
   provider => powershell
 }
 
-Package['Microsoft .NET Compact Framework 2.0'] ->
+Package['Microsoft .NET Compact Framework 2.0 SP2'] ->
   Package['Microsoft .NET Compact Framework 3.5'] ->
     Exec['Microsoft .NET Framework 3.5'] ->
       Package['Power Toys for the Microsoft .NET Compact Framework 3.5'] ->
