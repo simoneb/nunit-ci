@@ -70,7 +70,7 @@ package { 'mono3':
   ensure => '3.2.3',
   provider => chocolatey,
 }
-->
+# no dependency because it seems that sometimes mono installation might seem to fail, though it works fine
 exec { 'Add mono to path':
   command => "${appendPath} \"C:\\Program Files (x86)\\Mono-3.2.3\\bin\"",
   provider => powershell,
