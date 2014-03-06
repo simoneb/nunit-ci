@@ -21,6 +21,6 @@ The Linux machine runs the server and one agent, whereas the Windows machine run
 - Pull git submodules: `git submodule update --init`
 - Run `varant up server`. The first time the server is bootstrapped it will download lots of stuff, be sure to have a fast internet connection and spare time, next boots will require much less data and will be much quicker
 - Browse to the [server UI](http://192.168.30.10:8111) and complete installation and configuration of the TeamCity server (default options are good)
-- Run `vagrant up windows_agent`. The first time it will download the box, which is huge, and import it. Wait until provisioning is complete then logoff and logon with the vagrant/vagrant account to start the agent
-- Browse to the server UI and authorize the agent in the [Agents](http://192.168.30.10:8111/agents.html?tab=unauthorizedAgents) tab
+- Run `vagrant up windows_agent`. The first time it will download the box, which is huge, import it and then install many dependencies. Wait until provisioning is complete then logoff and logon with the `vagrant/vagrant` account to start the agent
+- Browse to the server UI and authorize the agents in the [Agents](http://192.168.30.10:8111/agents.html?tab=unauthorizedAgents) tab
 - The Windows agent will take a while to be active the first time because it will need to upgrade
