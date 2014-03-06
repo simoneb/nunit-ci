@@ -1,12 +1,13 @@
 downloads/
+.idea/
+modules/
+.vagrant/
 
-# We only keep the projects configuration in git
+# We we just the projects configuration in git
 TeamCityData/*
 !TeamCityData/config/
 TeamCityData/config/*
 !TeamCityData/config/projects/
-
-.vagrant/
 
 *.box
 *.vhd

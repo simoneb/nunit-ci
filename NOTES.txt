@@ -1,3 +1,4 @@
 - Vagrant Windows: https://github.com/WinRb/vagrant-windows
 - Creating a Windows box for Vagrant: http://www.thomasvjames.com/2013/09/create-a-windows-base-box-for-vagrant/
-- Installing .NET: http://msdn.microsoft.com/en-us/library/5a4x27ek(v=vs.110).aspx
+- Installing .NET 4.5.x: http://msdn.microsoft.com/en-us/library/5a4x27ek(v=vs.110).aspx
+- Installing .NET 3.5: http://msdn.microsoft.com/library/hh506443(v=vs.120).aspx

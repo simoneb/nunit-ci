@@ -1,35 +1,42 @@
+unless Vagrant.has_plugin?("vagrant-windows")
+  raise 'vagrant-windows is not installed, please run "vagrant plugin install vagrant-windows"'
+end
+
 Vagrant.configure("2") do |config|
   
-  config.vm.define "server" do |c|
-    c.vm.box = "ubuntu"
+  config.vm.define 'server' do |c|
+    c.vm.box = 'ubuntu'
           
-    c.vm.network :private_network, ip: "192.168.30.10"
+    c.vm.network :private_network, ip: '192.168.30.10'
     
     c.vm.provider :virtualbox do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ['modifyvm', :id, '--memory', '1024']
     end
     
-    c.vm.provision "shell", path: "scripts/provision_server.sh"
+    c.vm.provision 'shell', path: 'scripts/provision-server.sh'
   end
   
-  config.vm.define "windows_agent" do |c|
-    c.vm.box = "windows-server-2008-r2-eval"
-    #c.vm.box_url = ""
+  config.vm.define 'windows_agent' do |c|
+    c.vm.box = 'win2008r2x64'
+    c.vm.box_url = 'https://googledrive.com/host/0B6J6sk4wHy07NmxkdmNma0xYb00/'
     c.vm.guest = :windows
+    c.windows.halt_timeout = 20
     c.winrm.timeout = 500
+
+    c.vm.network :private_network, ip: '192.168.30.11'
     
-    c.vm.network :private_network, ip: "192.168.30.11"
-    
-    c.vm.network :forwarded_port, guest: 5985, host: 5985, id: "winrm", auto_correct: true
-    c.vm.network :forwarded_port, guest: 1433, host: 1433
-    
+    c.vm.network :forwarded_port, guest: 5985, host: 5985, id: 'winrm', auto_correct: true
+
     c.vm.provider :virtualbox do |vb|
       vb.gui = true
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
-      vb.customize ["modifyvm", :id, "--nictype2", "82545EM"]
+      #vb.customize ["modifyvm", :id, "--memory", "2048"]
+      vb.customize ['modifyvm', :id, '--nictype2', '82545EM']
     end
         
-    c.vm.provision "shell", path: "scripts/provision_windows_agent.ps1"
+    c.vm.provision :shell, path: 'scripts/install-puppet.ps1'
+    c.vm.provision :shell, inline: 'iex ((new-object net.webclient).DownloadString("https://chocolatey.org/install.ps1"))'
+    c.vm.provision :shell, path: 'scripts/schedule-puppet-run.cmd'
+    c.vm.provision :shell, path: 'scripts/provision-windows-agent.ps1'
   end
 
 end

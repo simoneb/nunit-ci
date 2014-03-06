@@ -6,7 +6,7 @@
   <settings>
     <options>
       <option name="artifactRules" value="build/%Configuration%/%Framework% =&gt; nunit-framework_%Framework%.zip" />
-      <option name="executionTimeoutMin" value="2" />
+      <option name="executionTimeoutMin" value="3" />
     </options>
     <parameters>
       <param name="Configuration" value="Release" />
