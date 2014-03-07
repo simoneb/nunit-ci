@@ -1,3 +1,5 @@
+#!/bin/sh
+
 TEAMCITY_PACKAGE=TeamCity-8.1a.tar.gz
 
 sudo apt-get update -y
