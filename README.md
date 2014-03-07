@@ -23,10 +23,10 @@ This has been tested on a Windows 7 host, in theory it might work just as well o
 1. `git clone https://github.com/simoneb/nunit-ci.git && cd nunit-ci`
 - `git submodule update --init`
 - `vagrant up server`. The first time it will take quite some time, just wait until provisioning is complete, then:
-- Browse to the [server UI](http://192.168.30.10:8111) and complete the installation and configuration. Default options are good, you just need to create a user.
+- Browse to [audrey.xip.io](http://audrey.xip.io) (yes, that's your local VM) and complete the installation and configuration. Default options are good, you just need to create a user.
 - `vagrant up windows_agent`. The first time it will download the box, which is huge, import it and then install many dependencies. Wait until provisioning is complete then logoff and logon with the `vagrant/vagrant` account to start the agent.
 > Do not reboot a machine managed by Vagrant from within the machine because at startup it will not re-mount the shared folders it needs to work properly. Only use Vagrant commands like `vagrant halt` or `vagrant reload`.
-- Browse to the server UI and authorize the agent in the [Agents](http://192.168.30.10:8111/agents.html?tab=unauthorizedAgents) tab. The Windows agent will take a while to be active the first time because it will need to upgrade.
+- Browse to the server UI and authorize the agent in the [Agents](http://audrey.xip.io/agents.html?tab=unauthorizedAgents) tab. The Windows agent will take a while to be active the first time because it will need to upgrade.
 
 ## Using
 

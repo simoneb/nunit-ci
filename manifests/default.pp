@@ -7,7 +7,7 @@ $netcf35Path = "c:\\vagrant\\downloads\\netcf35.msi"
 $netcf35PowerToysUrl = "http://download.microsoft.com/download/f/a/c/fac1342d-044d-4d88-ae97-d278ef697064/NETCFv35PowerToys.msi"
 $netcf35PowerToysPath = "c:\\vagrant\\downloads\\netcf35PowerToys.msi"
 
-$agentZipUrl = "http://192.168.30.10:8111/update/buildAgent.zip"
+$agentZipUrl = "http://audrey.xip.io/update/buildAgent.zip"
 $agentZipPath = "c:\\vagrant\\downloads\\buildAgent.zip"
 
 $appendPath = 'c:/vagrant/scripts/append-to-path.ps1'

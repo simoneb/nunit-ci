@@ -4,9 +4,9 @@ sudo apt-get update -y
 sudo apt-get install openjdk-7-jre-headless -y
 sudo apt-get install mono-devel -y
 
-if [ ! -f /vagrant/downloads/$TEAMCITY_PACKAGE ]; then
+if [ ! -f /vagrant/downloads/${TEAMCITY_PACKAGE} ]; then
   echo "TeamCity package $TEAMCITY_PACKAGE not found, downloading"
-  wget -P /vagrant/downloads http://download.jetbrains.com/teamcity/$TEAMCITY_PACKAGE
+  wget -P /vagrant/downloads http://download.jetbrains.com/teamcity/${TEAMCITY_PACKAGE}
 fi
 
 if [ -d TeamCity ]; then
@@ -19,7 +19,10 @@ if [ -d TeamCity ]; then
 fi
 
 echo "Unpacking TeamCity"
-tar -xzf /vagrant/downloads/$TEAMCITY_PACKAGE 
+tar -xzf /vagrant/downloads/${TEAMCITY_PACKAGE}
+
+echo "Changing server port from 8111 to 80"
+sed -i.bak -e s/8111/80/g TeamCity/conf/server.xml
 
 echo "Configuring server and agent to startup automatically at boot"
 cat > /etc/init.d/teamcity <<EOF
