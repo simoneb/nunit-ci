@@ -24,6 +24,9 @@ tar -xzf /vagrant/downloads/${TEAMCITY_PACKAGE}
 echo "Changing server port from 8111 to 80"
 sed -i.bak -e s/8111/80/g TeamCity/conf/server.xml
 
+echo "Replacing agent configuration file"
+cp /vagrant/config/buildAgent.linux.properties TeamCity/buildAgent/conf/buildAgent.properties
+
 echo "Configuring server and agent to startup automatically at boot"
 cat > /etc/init.d/teamcity <<EOF
 #! /bin/sh
