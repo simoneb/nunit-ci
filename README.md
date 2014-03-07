@@ -36,7 +36,7 @@ The TeamCity configuration is stored in the repository, this means that after bo
 
 #### Supported platforms and frameworks
 
-- Windows .NET 2.0, 3.5, 4.0, 4.5_.1_
+- Windows .NET 2.0, 3.5, 4.0, 4.5(_.1_)
 - Windows mono 2.0, 3.5, 4.0
 - Linux mono 2.0, 3.5, 4.0
 - .NET Compact Framework 2.0, 3.5
