@@ -12,11 +12,11 @@ $net40SDKIsoPath = "c:\\vagrant\\downloads\\net40SDK.iso"
 $net40SDKExtractLocation = "c:\\vagrant\\downloads\\net40SDK"
 $net40SDKInstaller = "c:\\vagrant\\downloads\\net40SDK\\setup.exe"
 
-$net4SDKUrl = "http://www.microsoft.com/click/services/Redirect2.ashx?CR_EAC=300135395"
-$net451SDKPath = "c:\\vagrant\\downloads\\net451SDK.exe"
-
 $net451Url = "http://go.microsoft.com/fwlink/?LinkId=322116"
 $net451Path = "c:\\vagrant\\downloads\\net451.exe"
+
+$net451SDKUrl = "http://www.microsoft.com/click/services/Redirect2.ashx?CR_EAC=300135395"
+$net451SDKPath = "c:\\vagrant\\downloads\\net451SDK.exe"
 
 $agentZipUrl = "http://audrey.xip.io/update/buildAgent.zip"
 $agentZipPath = "c:\\vagrant\\downloads\\buildAgent.zip"
@@ -93,6 +93,7 @@ exec { 'GetNet40SDK':
   command => "curl.exe -L -o ${net40SDKIsoPath} ${net40SDKUrl}",
   creates => $net40SDKIsoPath,
   provider => powershell,
+  timeout => 600
 }
 ->
 exec { 'Extract .NET 4.0 SDK Image':
@@ -111,6 +112,7 @@ exec { 'GetNet451SDK':
   command   => "curl.exe -L -o ${net451SDKPath} ${net451SDKUrl}",
   creates => $net451SDKPath,
   provider  => powershell,
+  timeout => 600
 }
 ->
 package { 'Microsoft .NET Framework 4.5.1 SDK':
