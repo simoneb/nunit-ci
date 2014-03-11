@@ -7,13 +7,10 @@ $netcf35Path = "c:\\vagrant\\downloads\\netcf35.msi"
 $netcf35PowerToysUrl = "http://download.microsoft.com/download/f/a/c/fac1342d-044d-4d88-ae97-d278ef697064/NETCFv35PowerToys.msi"
 $netcf35PowerToysPath = "c:\\vagrant\\downloads\\netcf35PowerToys.msi"
 
-$net40SDKUrl = "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDK_EN_DVD.iso "
+$net40SDKUrl = "http://download.microsoft.com/download/F/1/0/F10113F5-B750-4969-A255-274341AC6BCE/GRMSDKX_EN_DVD.iso"
 $net40SDKIsoPath = "c:\\vagrant\\downloads\\net40SDK.iso"
 $net40SDKExtractLocation = "c:\\vagrant\\downloads\\net40SDK"
 $net40SDKInstaller = "c:\\vagrant\\downloads\\net40SDK\\setup.exe"
-
-$net451Url = "http://go.microsoft.com/fwlink/?LinkId=322116"
-$net451Path = "c:\\vagrant\\downloads\\net451.exe"
 
 $net451SDKUrl = "http://www.microsoft.com/click/services/Redirect2.ashx?CR_EAC=300135395"
 $net451SDKPath = "c:\\vagrant\\downloads\\net451SDK.exe"
@@ -77,18 +74,6 @@ package { 'Silverlight5SDK':
   provider => chocolatey,
 }
 
-exec { 'GetNet451':
-  command   => "curl.exe -L -o ${net451Path} ${net451Url}",
-  creates => $net451Path,
-  provider  => powershell,
-}
-->
-package { 'Microsoft .NET Framework 4.5.1':
-  ensure => installed,
-  source => $net451Path,
-  install_options => ['/q', '/norestart', '/repair'],
-}
-
 exec { 'GetNet40SDK':
   command => "curl.exe -L -o ${net40SDKIsoPath} ${net40SDKUrl}",
   creates => $net40SDKIsoPath,
@@ -99,7 +84,7 @@ exec { 'GetNet40SDK':
 exec { 'Extract .NET 4.0 SDK Image':
   command => "\"C:\\Program Files\\7-Zip\\7z.exe\" x -tudf -o${net40SDKExtractLocation} ${net40SDKIsoPath}",
   creates => $net40SDKInstaller,
-  provider => powershell
+  #provider => powershell
 }
 ->
 package { 'Microsoft .NET Framework 4.0 SDK':
@@ -146,6 +131,5 @@ Package['Microsoft .NET Compact Framework 2.0 SP2'] ->
     Exec['Microsoft .NET Framework 3.5'] ->
       Package['Power Toys for the Microsoft .NET Compact Framework 3.5'] ->
         Package['Microsoft .NET Framework 4.0 SDK'] ->
-          Package['Microsoft .NET Framework 4.5.1'] ->
-            Package['Microsoft .NET Framework 4.5.1 SDK'] ->
-              Package['Silverlight5SDK']
+          Package['Microsoft .NET Framework 4.5.1 SDK'] ->
+            Package['Silverlight5SDK']
