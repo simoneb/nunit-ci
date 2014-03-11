@@ -104,7 +104,7 @@ exec { 'Extract .NET 4.0 SDK Image':
 package { 'Microsoft .NET Framework 4.0 SDK':
   ensure => installed,
   source => $net40SDKInstaller,
-  install_arguments => ['-q', '-params:ADDLOCAL=ALL']
+  install_options => ['-q', '-params:ADDLOCAL=ALL']
 }
 
 exec { 'GetNet451SDK':
@@ -116,7 +116,7 @@ exec { 'GetNet451SDK':
 package { 'Microsoft .NET Framework 4.5.1 SDK':
   ensure => installed,
   source => $net451SDKPath,
-  install_arguments => ['-q']
+  install_options => ['-q']
 }
 
 package { 'mono3':

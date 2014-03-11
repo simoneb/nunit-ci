@@ -7,7 +7,7 @@ exec { 'GetNet40':
   provider  => powershell,
 }
 ->
-package { 'Microsoft .NET Framework 4.0':
+package { 'Microsoft .NET Framework 4 Extended':
   ensure => installed,
   source => $net40Path,
   install_options => ['/q', '/norestart', '/repair'],
