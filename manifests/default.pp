@@ -97,7 +97,7 @@ exec { 'GetNet40SDK':
 }
 ->
 exec { 'Extract .NET 4.0 SDK Image':
-  command => "C:\\Program Files\\7-Zip\\7z.exe x -tudf -o${net40SDKExtractLocation} ${net40SDKIsoPath}",
+  command => "\"C:\\Program Files\\7-Zip\\7z.exe\" x -tudf -o${net40SDKExtractLocation} ${net40SDKIsoPath}",
   creates => $net40SDKInstaller,
   provider => powershell
 }
