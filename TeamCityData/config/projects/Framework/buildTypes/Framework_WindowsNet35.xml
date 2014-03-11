@@ -6,7 +6,7 @@
   <description />
   <settings ref="Framework_FrameworkTemplate">
     <parameters>
-      <param name="Framework" value="net-4.0" />
+      <param name="Framework" value="net-3.5" />
     </parameters>
     <build-runners order="RUNNER_1" />
     <vcs-settings />

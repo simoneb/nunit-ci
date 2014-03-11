@@ -2,6 +2,13 @@
 
 TEAMCITY_PACKAGE=TeamCity-8.1a.tar.gz
 
+# prerequisites for the add-apt-repository command
+sudo apt-get install python-software-properties -y
+sudo apt-get install software-properties-common -y
+
+# required to install a recent mono version
+sudo add-apt-repository ppa:directhex/monoxide
+
 sudo apt-get update -y
 sudo apt-get install openjdk-7-jre-headless -y
 sudo apt-get install mono-devel -y
