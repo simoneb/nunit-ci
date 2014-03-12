@@ -14,7 +14,7 @@
     <build-runners>
       <runner id="RUNNER_1" name="" type="simpleRunner">
         <parameters>
-          <param name="script.content" value="./runbuild /p:Configuration=%Configuration% /p:TestOptions=-teamcity /p:Framework=%Framework% &quot;/t:DumpSettings;CleanAll;Build;Test&quot;" />
+          <param name="script.content" value="./runbuild /p:Configuration=%Configuration% /p:Framework=%Framework% &quot;/t:DumpSettings;CleanAll;Build;Test&quot;" />
           <param name="teamcity.step.mode" value="default" />
           <param name="use.custom.script" value="true" />
         </parameters>
@@ -31,6 +31,15 @@
         </parameters>
       </build-trigger>
     </build-triggers>
+    <build-extensions>
+      <extension id="BUILD_EXT_1" type="xml-report-plugin">
+        <parameters>
+          <param name="xmlReportParsing.reportDirs" value="build/%Configuration%/%Framework%/TestResult.v2.xml" />
+          <param name="xmlReportParsing.reportType" value="nunit" />
+          <param name="xmlReportParsing.verboseOutput" value="true" />
+        </parameters>
+      </extension>
+    </build-extensions>
     <cleanup />
   </settings>
 </template>
